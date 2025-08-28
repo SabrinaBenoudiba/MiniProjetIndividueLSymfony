@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Movie;
-use App\Entity\MovieDirector;
-use App\Entity\MovieGenre;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,12 +43,10 @@ final class MovieController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_movie_show', methods: ['GET'])]
-    public function show(Movie $movie, MovieDirector $movieDirector, MovieGenre $movieGenre): Response
+    public function show(Movie $movie): Response
     {
         return $this->render('movie/show.html.twig', [
-            'movie' => $movie,
-            'movieDirector' => $movieDirector,
-            'movieGenre' => $movieGenre,
+            'movie' => $movie
         ]);
     }
 

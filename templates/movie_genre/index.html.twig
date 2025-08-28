@@ -1,11 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MovieGenre index{% endblock %}
+{% block title %}Catégorie de films{% endblock %}
 
 {% block body %}
-    <h1>MovieGenre index</h1>
+    <h1>Catégorie de films</h1>
 
-    <table class="table">
+  {% for movie_genre in movie_genres %} 
+    <div class="card col-3 m-3 d-flex" style="width: 18rem;">
+        {# <img src="..." class="card-img-top" alt="..."> #}
+        <div class="card-body">
+            <h5 class="card-title">{{ (movie_genre.TypeName) }}</h5>
+            <p class="card-text">{{ (movie_genre.Description) }}</p>
+            <a class="btn btn-outline-primary" href="{{ path('app_movie_genre_show', {'id': movie_genre.id}) }}">Modifier</a>
+            <a onclick ="return confirm('Voulez-vous vraiment supprimer cette catégorie ?')" class="btn btn-outline-danger" href="{{ path('app_movie_genre_edit', {'id': movie_genre.id}) }}">Supprimer</a>
+        </div>
+    </div>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+  {% endfor %}
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,7 +46,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
 
     <a href="{{ path('app_movie_genre_new') }}">Create new</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MovieDirector{% endblock %}
+{% block title %}Réalisateur{% endblock %}
 
 {% block body %}
-    <h1>MovieDirector</h1>
+    <h1>Réalisateur du film</h1>
 
 
     <table class="table">
@@ -13,22 +13,24 @@
                 <td>{{ movie_director.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <td>{{ movie_director.name }}</td>
             </tr>
             <tr>
-                <th>Surname</th>
+                <th>Prénom</th>
                 <td>{{ movie_director.surname }}</td>
             </tr>
             <tr>
-                <th>Birthdate</th>
+                <th>Date de naissance</th>
                 <td>{{ movie_director.birthdate ? movie_director.birthdate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Filmografy</th>
-                   {% for movie in movie_director.movies %}
+                <th>Filmographie</th>
+                {% for movie in movie_director.movies %}
                 <td>
-                    {{ movie.movieTitle }}
+                    <a href="{{ path('app_movie_show', {'id': movie.id}) }}">
+                        {{ movie.movieTitle }}
+                    </a><br>
                 </td>
                 {% endfor %}
             </tr>

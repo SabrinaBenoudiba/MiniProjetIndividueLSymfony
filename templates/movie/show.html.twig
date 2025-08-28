@@ -25,11 +25,21 @@
             </tr>
             <tr>
                 <th>Director</th>
-                <td>{{ movieDirector.name }} {{ movieDirector.surname }}</td>
+                {# <td>{{ movie.filmography ? movie.filmography.name ~ ' ' ~ movie.filmography.surname : 'Liste vide' }}</td> #}
+                {% if movie.filmography %}
+                    <td>{{ movie.filmography.name }} {{ movie.filmography.surname }}</td>
+                {% else %}
+                    <td>pas de réalisateur connu</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Movie Genre</th>
-                <td>{{ movieGenre.typeName }}</td>
+                {# <td>{{ movie.genre ? movie.genre.typeName : '' }}</td> #}
+                {% if movie.genre %}
+                    <td> {{ movie.genre.typeName }}</td>
+                {% else %}
+                    <td>Pas de genre connu</td>
+                {% endif %}
             </tr>
 
 

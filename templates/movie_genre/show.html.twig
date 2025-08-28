@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MovieGenre{% endblock %}
+{% block title %}Type de films{% endblock %}
 
 {% block body %}
-    <h1>MovieGenre</h1>
+    <h1>Films en fonction du Type</h1>
 
     <table class="table">
         <tbody>
@@ -12,13 +12,25 @@
                 <td>{{ movie_genre.id }}</td>
             </tr>
             <tr>
-                <th>TypeName</th>
+                <th>Type</th>
                 <td>{{ movie_genre.TypeName }}</td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>{{ movie_genre.Description }}</td>
             </tr>
+          <tr>
+            <th>Liste des films</th>
+            <td>
+                {% for movie in movie_genre.movies %}
+                    <a href="{{ path('app_movie_show', {id: movie.id}) }}">
+                        {{ movie.movieTitle }}
+                    </a><br>
+                {% else %}
+                    Aucun film pour ce genre.
+                {% endfor %}
+            </td>
+        </tr>
         </tbody>
     </table>
 

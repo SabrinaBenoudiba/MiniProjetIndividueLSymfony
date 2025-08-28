@@ -3,12 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Movie;
-use App\Entity\movieDirector;
 use App\Entity\MovieGenre;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\movieDirector;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class MovieType extends AbstractType
 {
