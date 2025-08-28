@@ -25,6 +25,9 @@ class Movie
     #[ORM\ManyToOne(inversedBy: 'movies')]
     private ?movieDirector $filmography = null;
 
+    #[ORM\ManyToOne(inversedBy: 'movies')]
+    private ?MovieGenre $Genre = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Movie
     public function setFilmography(?movieDirector $filmography): static
     {
         $this->filmography = $filmography;
+
+        return $this;
+    }
+
+    public function getGenre(): ?MovieGenre
+    {
+        return $this->Genre;
+    }
+
+    public function setGenre(?MovieGenre $Genre): static
+    {
+        $this->Genre = $Genre;
 
         return $this;
     }

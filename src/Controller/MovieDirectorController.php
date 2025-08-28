@@ -10,8 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
-#[Route('/movie/director')]
+#[Route('/director')]
 final class MovieDirectorController extends AbstractController
 {
     #[Route(name: 'app_movie_director_index', methods: ['GET'])]
@@ -45,8 +46,9 @@ final class MovieDirectorController extends AbstractController
     #[Route('/{id}', name: 'app_movie_director_show', methods: ['GET'])]
     public function show(MovieDirector $movieDirector): Response
     {
+
         return $this->render('movie_director/show.html.twig', [
-            'movie_director' => $movieDirector,
+            'movie_director' => $movieDirector
         ]);
     }
 

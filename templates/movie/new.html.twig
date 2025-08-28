@@ -1,20 +1,11 @@
-{# {% extends 'base.html.twig' %}
-
-<h1>Ajouter un film</h1>
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Enregistrer</button>
-{{ form_end(form) }} #}
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un film{% endblock %}
+{% block title %}New Movie{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Ajouter un film</h1>
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit">Enregistrer</button>
-    {{ form_end(form) }}
+    <h1>Create new Movie</h1>
+
+    {{ include('movie/_form.html.twig') }}
+
+    <a href="{{ path('app_movie_index') }}">back to list</a>
 {% endblock %}

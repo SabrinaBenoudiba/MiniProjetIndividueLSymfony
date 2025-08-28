@@ -1,39 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Film{% endblock %}
+{% block title %}Movie{% endblock %}
 
 {% block body %}
+    <h1>Movie</h1>
 
-<div class="container">
-    <h1>Film</h1>
-        {# <img src="{{ asset('uploads/images/' ~ product.image) }}" alt="Photo de profil" style="max-width:180px; border-radius:50%;"> #}
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ movie.id }}</td>
-                </tr>
-                <tr>
-                    <th>Titre du film</th>
-                    <td>{{ movie.movieTitle }}</td>
-                </tr>
-                <tr>
-                    <th>Année de sortie du film</th>
-                    <td>{{ movie.yearReleased }}</td>
-                </tr>
-                <tr>
-                    <th>Durée du film</th>
-                    <td>{{ movie.movieDuration }} minutes</td>
-                </tr>
-                {# <tr>
-                    <th>Image du film</th>
-                    <td>{{ movie.image }}</td>
-                </tr> #}
-
-            </tbody>
-        </table>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ movie.id }}</td>
+            </tr>
+            <tr>
+                <th>Movie Title</th>
+                <td>{{ movie.movieTitle }}</td>
+            </tr>
+            <tr>
+                <th>Year Released</th>
+                <td>{{ movie.yearReleased }}</td>
+            </tr>
+            <tr>
+                <th>Movie Duration</th>
+                <td>{{ movie.movieDuration }}</td>
+            </tr>
+            <tr>
+                <th>Director</th>
+                <td>{{ movieDirector.name }} {{ movieDirector.surname }}</td>
+            </tr>
+            <tr>
+                <th>Movie Genre</th>
+                <td>{{ movieGenre.typeName }}</td>
+            </tr>
 
 
-</div>
-    
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_movie_index') }}">back to list</a>
+
+    <a href="{{ path('app_movie_edit', {'id': movie.id}) }}">edit</a>
+
+    {{ include('movie/_delete_form.html.twig') }}
 {% endblock %}
